@@ -15,9 +15,6 @@
 		<module>topnb-profiler</module>
 	</modules>
 
-
-
-
 	<parent>
 		<groupId>io.leopard.depend</groupId>
 		<artifactId>depend</artifactId>
@@ -25,11 +22,14 @@
 	</parent>
 
 	<scm>
-		<url>http://leopard.io/topnb/</url>
-		<connection>scm:svn://svn.leopard.io/leopard/solution/topnb/trunk</connection>
-		<developerConnection>scm:svn://svn.leopard.io/leopard/solution/topnb/trunk</developerConnection>
+		<url>https://github.com/tanhaichao/topnb</url>
+		<connection>scm:svn:https://github.com/tanhaichao/topnb/trunk</connection>
+		<developerConnection>scm:svn:https://github.com/tanhaichao/topnb/trunk</developerConnection>
 	</scm>
 
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/tanhaichao/topnb/issues</url>
+	</issueManagement>
 
-	
 </project>
