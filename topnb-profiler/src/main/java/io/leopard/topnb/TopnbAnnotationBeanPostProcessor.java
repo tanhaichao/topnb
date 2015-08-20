@@ -13,7 +13,6 @@ public class TopnbAnnotationBeanPostProcessor extends InstantiationAwareBeanPost
 	public TopnbAnnotationBeanPostProcessor() {
 		System.err.println("new TopnbAnnotationBeanPostProcessor");
 		
-		
 		BeanFactoryUtils ddd;
 		BeanFactory dd;
 		ServiceLoader<String> dddd;
