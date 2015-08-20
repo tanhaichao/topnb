@@ -1,21 +1,13 @@
 package io.leopard.topnb;
 
-import java.util.ServiceLoader;
-
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 
 //@Component
 public class TopnbAnnotationBeanPostProcessor extends InstantiationAwareBeanPostProcessorAdapter {
 
 	public TopnbAnnotationBeanPostProcessor() {
-		System.err.println("new TopnbAnnotationBeanPostProcessor");
-		
-		BeanFactoryUtils ddd;
-		BeanFactory dd;
-		ServiceLoader<String> dddd;
+		System.out.println("new TopnbAnnotationBeanPostProcessor");
 	}
 
 	@Override
