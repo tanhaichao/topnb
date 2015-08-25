@@ -40,10 +40,10 @@ public class TotalTimePerformanceComparatorTest {
 			performanceVOList.add(performanceVO);
 		}
 		Collections.sort(performanceVOList, new AllTimeMethodComparator());
-		Assert.assertEquals(3, performanceVOList.get(0).getAllTime());
-		Assert.assertEquals(2, performanceVOList.get(1).getAllTime());
-		Assert.assertEquals(1, performanceVOList.get(2).getAllTime());
-		Assert.assertEquals(1, performanceVOList.get(3).getAllTime());
+		Assert.assertEquals(3, performanceVOList.get(0).getAllTime(), 0L);
+		Assert.assertEquals(2, performanceVOList.get(1).getAllTime(), 0L);
+		Assert.assertEquals(1, performanceVOList.get(2).getAllTime(), 0L);
+		Assert.assertEquals(1, performanceVOList.get(3).getAllTime(), 0L);
 	}
 
 }
