@@ -1,8 +1,8 @@
 package io.leopard.topnb.web.freemarker;
 
-import java.io.IOException;
-
 import io.leopard.topnb.web.freemarker.template.BodyTemplateDirective;
+
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
