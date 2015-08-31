@@ -25,6 +25,10 @@ import org.apache.commons.logging.LogFactory;
 @WebServlet(name = "topnbMethodTimeServlet", urlPatterns = "/topnb/index.leo")
 public class MethodTimeServlet extends AbstractHttpServlet implements Menu {
 
+	public MethodTimeServlet() {
+		System.err.println("new MethodTimeServlet.");
+	}
+
 	private static final long serialVersionUID = 1L;
 	protected Log logger = LogFactory.getLog(this.getClass());
 
