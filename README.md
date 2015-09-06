@@ -14,8 +14,13 @@ Leopard监控系统，包含方法耗时监控、请求耗时监控、线程数�
 		<dependency>
 			<groupId>io.leopard.topnb</groupId>
 			<artifactId>topnb-profiler</artifactId>
+			<version>0.0.2</version>
 		</dependency>
-		<version>0.0.1</version>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+    		<artifactId>javax.servlet-api</artifactId>
+    		<version>3.1.0</version>
+    	</dependency>
 		...
 	</dependencies>
 ```
@@ -35,10 +40,10 @@ Leopard监控系统，包含方法耗时监控、请求耗时监控、线程数�
 #如果你的webserver不支持@WebServlet、@WebListener
 请在web.xml加入
 ```
-	<absolute-ordering>
+	<ordering>
 		<name>topnb_webfragment</name>
 		...
-	</absolute-ordering>
+	</ordering>
 ```
 
 
