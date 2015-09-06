@@ -40,10 +40,16 @@ Leopard监控系统，包含方法耗时监控、请求耗时监控、线程数�
 #如果你的webserver不支持@WebServlet、@WebListener
 请在web.xml加入
 ```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+	...
 	<ordering>
 		<name>topnb_webfragment</name>
 		...
 	</ordering>
+	...
+</web-app>
 ```
 
 
