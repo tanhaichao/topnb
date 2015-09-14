@@ -1,6 +1,8 @@
 # topnb
 Leopard监控系统，包含方法耗时监控、请求耗时监控、线程数量统计等功能。
 
+方法耗时监控：可以按入口(URL)查看统计数据。
+
 官网使用文档<http://leopard.io/modules/topnb>
 
 # Leopard官网的TopNB例子
