@@ -1,7 +1,9 @@
 package io.leopard.topnb.web;
 
-import io.leopard.jetty.test.JettyHttpnb;
+import io.leopard.httpnb.Httpnb;
+import io.leopard.jetty.test.JettyTester;
 
+import org.eclipse.jetty.server.Server;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,7 +11,6 @@ public class FileServletTest {
 
 	@Test
 	public void isValidFilename() {
-
 		Assert.assertTrue(FileServlet.isValidFilename("test.jpg"));
 		Assert.assertTrue(FileServlet.isValidFilename("img/test.jpg"));
 		Assert.assertTrue(FileServlet.isValidFilename("img/icons/monitor/ic_ok.png"));
@@ -17,9 +18,18 @@ public class FileServletTest {
 	}
 
 	@Test
-	public void test() {
-		String result = JettyHttpnb.doGet("http://localhost//topnb/file.leo?f=css/bootstrap.css");
-		System.out.println("result:" + result);
+	public void test() throws Exception {
+		Server server = JettyTester.start();
+		{
+			String result = Httpnb.doGet("http://localhost/topnb/file.leo?f=css/bootstrap.css");
+			// System.out.println("result:" + result);
+		}
+		{
+			String result = Httpnb.doGet("http://localhost/topnb/file.leo?f=test.css");
+			System.out.println("result:" + result);
+			Assert.assertEquals("test", result);
+		}
+		server.stop();
 	}
 
 	// @Test

@@ -1,6 +1,9 @@
 package io.leopard.topnb.web;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -35,8 +38,7 @@ public class FileServlet extends HttpServlet {
 		}
 
 		String contentType = parseContentType(filename);
-
-		InputStream input = request.getServletContext().getResourceAsStream(filename);
+		InputStream input = getRealAsInputStream(request, filename);
 		if (input == null) {
 			input = FileServlet.class.getResourceAsStream("/topnb/htdocs/" + filename);
 			if (input == null) {
@@ -52,6 +54,23 @@ public class FileServlet extends HttpServlet {
 		OutputStream out = response.getOutputStream();
 		out.write(bytes);
 		out.flush();
+	}
+
+	protected InputStream getRealAsInputStream(HttpServletRequest request, String filename) {
+		String path = request.getServletContext().getRealPath(filename);
+		File file = new File(path);
+		if (!file.exists()) {
+			return null;
+		}
+		if (!file.isFile()) {
+			return null;
+		}
+		try {
+			return new FileInputStream(path);
+		}
+		catch (FileNotFoundException e) {
+			return null;
+		}
 	}
 
 	protected static byte[] toBytes(InputStream input) throws IOException {
