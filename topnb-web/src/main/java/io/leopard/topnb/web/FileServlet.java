@@ -33,8 +33,18 @@ public class FileServlet extends HttpServlet {
 		if (!isValidFilename(filename)) {
 			throw new IllegalArgumentException("非法文件名[" + filename + "].");
 		}
+
 		String contentType = parseContentType(filename);
-		byte[] bytes = read(filename);
+
+		InputStream input = request.getServletContext().getResourceAsStream(filename);
+		if (input == null) {
+			input = FileServlet.class.getResourceAsStream("/topnb/htdocs/" + filename);
+			if (input == null) {
+				throw new NullPointerException("文件[" + filename + "]不存在.");
+			}
+		}
+
+		byte[] bytes = toBytes(input);
 		response.setContentType(contentType);
 		response.setContentLength(bytes.length);
 
@@ -44,12 +54,7 @@ public class FileServlet extends HttpServlet {
 		out.flush();
 	}
 
-	protected static byte[] read(String filename) throws IOException {
-		String path = "/topnb/htdocs/" + filename;
-		InputStream input = FileServlet.class.getResourceAsStream(path);
-		if (input == null) {
-			throw new NullPointerException("文件[" + filename + "]不存在.");
-		}
+	protected static byte[] toBytes(InputStream input) throws IOException {
 		byte[] buffer = new byte[1024];
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		int n = 0;

@@ -6,22 +6,29 @@
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>topnb-web</artifactId>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.leopard</groupId>
+			<artifactId>leopard-jetty-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
