@@ -34,7 +34,7 @@ public class FileServlet extends HttpServlet {
 			throw new NullPointerException("文件名不能为空.");
 		}
 		String contentType = parseContentType(filename);
-		byte[] bytes = this.read(filename);
+		byte[] bytes = read(filename);
 		response.setContentType(contentType);
 		response.setContentLength(bytes.length);
 
@@ -60,7 +60,7 @@ public class FileServlet extends HttpServlet {
 		return m.matches();
 	}
 
-	protected byte[] read(String filename) throws IOException {
+	protected static byte[] read(String filename) throws IOException {
 		if (!isValidFilename(filename)) {
 			throw new IllegalArgumentException("非法文件名[" + filename + "].");
 		}
