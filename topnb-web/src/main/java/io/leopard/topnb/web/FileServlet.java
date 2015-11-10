@@ -30,8 +30,8 @@ public class FileServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filename = request.getParameter("f");
-		if (filename == null || filename.length() == 0) {
-			throw new NullPointerException("文件名不能为空.");
+		if (!isValidFilename(filename)) {
+			throw new IllegalArgumentException("非法文件名[" + filename + "].");
 		}
 		String contentType = parseContentType(filename);
 		byte[] bytes = read(filename);
@@ -39,14 +39,26 @@ public class FileServlet extends HttpServlet {
 		response.setContentLength(bytes.length);
 
 		response.setDateHeader("Expires", System.currentTimeMillis() + 1000 * 3600 * 24);
-		// Flush byte array to servlet output stream.
-
 		OutputStream out = response.getOutputStream();
 		out.write(bytes);
 		out.flush();
 	}
 
-	// TODO ahai 要禁止..
+	protected static byte[] read(String filename) throws IOException {
+		String path = "/topnb/htdocs/" + filename;
+		InputStream input = FileServlet.class.getResourceAsStream(path);
+		if (input == null) {
+			throw new NullPointerException("文件[" + filename + "]不存在.");
+		}
+		byte[] buffer = new byte[1024];
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		int n = 0;
+		while ((n = input.read(buffer)) != -1) {
+			output.write(buffer, 0, n);
+		}
+		return output.toByteArray();
+	}
+
 	private static Pattern FILENAME_PATTERN = Pattern.compile("^[a-zA-Z0-9\\-_/\\.]+\\.(css|jpg|png|js)$");
 
 	/**
@@ -56,39 +68,14 @@ public class FileServlet extends HttpServlet {
 	 * @return
 	 */
 	protected static boolean isValidFilename(String filename) {
+		if (filename == null || filename.length() == 0) {
+			throw new NullPointerException("文件名不能为空.");
+		}
+		if (filename.indexOf("..") != -1) {
+			throw new IllegalArgumentException("文件名称不能包含'..'");
+		}
 		Matcher m = FILENAME_PATTERN.matcher(filename);
 		return m.matches();
-	}
-
-	protected static byte[] read(String filename) throws IOException {
-		if (!isValidFilename(filename)) {
-			throw new IllegalArgumentException("非法文件名[" + filename + "].");
-		}
-		String path = "/topnb/htdocs/" + filename;
-		InputStream input = FileServlet.class.getResourceAsStream(path);
-		if (input == null) {
-			throw new NullPointerException("文件[" + filename + "]不存在.");
-		}
-
-		byte[] buffer = new byte[1024];
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		int n = 0;
-		while ((n = input.read(buffer)) != -1) {
-			output.write(buffer, 0, n);
-			// count += n;
-		}
-		return output.toByteArray();
-
-		// try {
-		// // byte[] data = new byte[input2.available()];
-		// // input2.read(data);
-		//
-		// // return data;
-		//
-		// }
-		// finally {
-		// input2.close();
-		// }
 	}
 
 	protected static String parseContentType(String filename) {
