@@ -40,7 +40,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId><scope>test</scope>
+			<artifactId>spring-webmvc</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
