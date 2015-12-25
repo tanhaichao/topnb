@@ -3,8 +3,6 @@ package io.leopard.topnb.methodtime;
 import java.text.DecimalFormat;
 import java.util.Date;
 
-import freemarker.template.utility.ClassUtil;
-
 /**
  * 
  * @author 阿海
@@ -187,7 +185,7 @@ public class ProfilerUtil {
 
 		Class<?> clazz;
 		try {
-			clazz = ClassUtil.forName(className);
+			clazz = Class.forName(className);
 		}
 		catch (ClassNotFoundException e) {
 			System.err.println("longMethodName:" + longMethodName);
