@@ -1,14 +1,14 @@
 package io.leopard.topnb.methodtime;
 
-import io.leopard.topnb.web.data.BaseData;
-import io.leopard.topnb.web.data.CountDto;
-import io.leopard.topnb.web.data.Data;
-import io.leopard.topnb.web.freemarker.TopnbView;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletRequest;
+
+import io.leopard.topnb.web.data.BaseData;
+import io.leopard.topnb.web.data.CountDto;
+import io.leopard.topnb.web.data.Data;
+import io.leopard.web.freemarker.template.RequestHolder;
 
 /**
  * 入口数据.
@@ -22,7 +22,7 @@ public class EntranceData implements Data {
 
 	@Override
 	public boolean add(String name, double time, int count) {
-		HttpServletRequest request = TopnbView.getRequest();
+		HttpServletRequest request = RequestHolder.getRequest();
 		// System.err.println("add:" + entryName);
 		if (request != null) {
 			String entryName = request.getRequestURI();

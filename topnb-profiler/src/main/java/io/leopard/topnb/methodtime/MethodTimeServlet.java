@@ -1,10 +1,5 @@
 package io.leopard.topnb.methodtime;
 
-import io.leopard.topnb.TopnbBeanFactory;
-import io.leopard.topnb.web.AbstractHttpServlet;
-import io.leopard.topnb.web.Menu;
-import io.leopard.topnb.web.freemarker.TemplateView;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import io.leopard.topnb.TopnbBeanFactory;
+import io.leopard.topnb.web.AbstractHttpServlet;
+import io.leopard.topnb.web.Menu;
+import io.leopard.topnb.web.freemarker.TopnbView;
 
 /**
  * 性能监控数据
@@ -63,7 +63,7 @@ public class MethodTimeServlet extends AbstractHttpServlet implements Menu {
 
 		Collections.sort(performanceVOList, MethodTimeComparator.get(order));
 
-		TemplateView view = new TemplateView("/topnb/ftl/", "method_time");
+		TopnbView view = new TopnbView("method_time");
 		view.addObject("performanceVOList", performanceVOList);
 		view.addObject("entryNameList", entryNameList);
 

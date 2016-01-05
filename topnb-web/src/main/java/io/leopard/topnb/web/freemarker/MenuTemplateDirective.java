@@ -1,7 +1,4 @@
-package io.leopard.topnb.web.freemarker.template;
-
-import io.leopard.topnb.web.Menu;
-import io.leopard.topnb.web.freemarker.TopnbView;
+package io.leopard.topnb.web.freemarker;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -15,6 +12,9 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import io.leopard.topnb.web.Menu;
+import io.leopard.web.freemarker.TemplateVariable;
+import io.leopard.web.freemarker.template.RequestHolder;
 
 /**
  * 消息Tab.
@@ -23,7 +23,7 @@ import freemarker.template.TemplateModel;
  *
  */
 
-public class MenuTemplateDirective implements TemplateDirectiveModel {
+public class MenuTemplateDirective implements TemplateDirectiveModel, TemplateVariable {
 	// <ul class="navigation">
 	// <li class="active"><a href="index.do"><span class="isw-grid"></span><span class="text">方法耗时</span></a></li>
 	// <!--
@@ -38,7 +38,7 @@ public class MenuTemplateDirective implements TemplateDirectiveModel {
 
 	@Override
 	public void execute(Environment env, @SuppressWarnings("rawtypes") Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
-		HttpServletRequest request = TopnbView.getRequest();
+		HttpServletRequest request = RequestHolder.getRequest();
 
 		String uri = request.getRequestURI();
 		StringBuilder sb = new StringBuilder();
@@ -59,5 +59,10 @@ public class MenuTemplateDirective implements TemplateDirectiveModel {
 			sb.append("</span></a></li>");
 		}
 		env.getOut().write(sb.toString());
+	}
+
+	@Override
+	public String getKey() {
+		return "menu";
 	}
 }

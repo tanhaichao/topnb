@@ -1,10 +1,11 @@
-package io.leopard.topnb.web.freemarker.template;
+package io.leopard.topnb.web.freemarker;
 
 import java.text.DecimalFormat;
 
 import javax.servlet.http.HttpServletRequest;
 
 import freemarker.template.TemplateModelException;
+import io.leopard.web.freemarker.template.AbstractTemplateMethod;
 
 /**
  * 平均时间计算
@@ -50,6 +51,11 @@ public class AvgTimeTemplateMethod extends AbstractTemplateMethod {
 		}
 		// System.out.println("avgTime:" + avgTime);
 		return avgTime + "ms";
+	}
+
+	@Override
+	public String getKey() {
+		return "avgTime";
 	}
 
 }

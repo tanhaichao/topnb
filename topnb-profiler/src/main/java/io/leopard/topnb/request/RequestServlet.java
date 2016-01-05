@@ -1,9 +1,5 @@
 package io.leopard.topnb.request;
 
-import io.leopard.topnb.TopnbBeanFactory;
-import io.leopard.topnb.web.Menu;
-import io.leopard.topnb.web.freemarker.TemplateView;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -11,6 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import io.leopard.topnb.TopnbBeanFactory;
+import io.leopard.topnb.web.Menu;
+import io.leopard.topnb.web.freemarker.TopnbView;
 
 /**
  * 请求耗时.
@@ -37,7 +37,7 @@ public class RequestServlet extends HttpServlet implements Menu {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<RequestDto> paging = requestService.list();
-		TemplateView view = new TemplateView("/topnb/ftl/", "request");
+		TopnbView view = new TopnbView("request");
 		view.addObject("paging", paging);
 		view.render(request, response);
 	}

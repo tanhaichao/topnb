@@ -1,4 +1,4 @@
-package io.leopard.topnb.web.freemarker.template;
+package io.leopard.topnb.web.freemarker;
 
 import java.io.IOException;
 import java.util.Map;
@@ -10,6 +10,7 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import io.leopard.web.freemarker.TemplateVariable;
 
 /**
  * 消息Tab.
@@ -18,7 +19,7 @@ import freemarker.template.TemplateModel;
  *
  */
 
-public class BodyTemplateDirective implements TemplateDirectiveModel {
+public class BodyTemplateDirective implements TemplateDirectiveModel, TemplateVariable {
 
 	private static ThreadLocal<Map<String, Object>> DATA = new ThreadLocal<Map<String, Object>>();
 
@@ -34,6 +35,11 @@ public class BodyTemplateDirective implements TemplateDirectiveModel {
 
 		Template template = env.getConfiguration().getTemplate(templateName + ".ftl");
 		template.process(DATA.get(), env.getOut());
+	}
+
+	@Override
+	public String getKey() {
+		return "templateBody";
 	}
 
 }

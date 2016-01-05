@@ -1,13 +1,13 @@
 package io.leopard.topnb.request;
 
-import io.leopard.topnb.TopnbBeanFactory;
-import io.leopard.topnb.methodtime.EntryService;
-import io.leopard.topnb.web.freemarker.TopnbView;
-
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
+
+import io.leopard.topnb.TopnbBeanFactory;
+import io.leopard.topnb.methodtime.EntryService;
+import io.leopard.web.freemarker.template.RequestHolder;
 
 @WebListener
 public class TopnbRequestServletRequestListener implements ServletRequestListener {
@@ -23,7 +23,7 @@ public class TopnbRequestServletRequestListener implements ServletRequestListene
 
 		// methodtime
 		HttpServletRequest request = (HttpServletRequest) sre.getServletRequest();
-		TopnbView.setRequest(request);
+		RequestHolder.setRequest(request);
 		String uri = request.getRequestURI();
 		EntryService.add(uri);
 	}

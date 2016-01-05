@@ -1,9 +1,5 @@
 package io.leopard.topnb.thread;
 
-import io.leopard.topnb.TopnbBeanFactory;
-import io.leopard.topnb.web.Menu;
-import io.leopard.topnb.web.freemarker.TemplateView;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -12,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import io.leopard.topnb.TopnbBeanFactory;
+import io.leopard.topnb.web.Menu;
+import io.leopard.topnb.web.freemarker.TopnbView;
 
 /**
  * 性能监控数据
@@ -27,10 +27,9 @@ public class ThreadServlet extends HttpServlet implements Menu {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		List<ThreadInfo> threadInfoList = threadService.listAll();
 
-		TemplateView view = new TemplateView("/topnb/ftl/", "thread");
+		TopnbView view = new TopnbView("thread");
 		view.addObject("threadInfoList", threadInfoList);
 		view.render(request, response);
 	}

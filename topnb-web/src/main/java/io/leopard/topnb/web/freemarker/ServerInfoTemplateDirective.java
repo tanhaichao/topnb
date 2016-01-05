@@ -1,4 +1,4 @@
-package io.leopard.topnb.web.freemarker.template;
+package io.leopard.topnb.web.freemarker;
 
 import java.io.IOException;
 import java.util.Date;
@@ -9,6 +9,7 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import io.leopard.web.freemarker.TemplateVariable;
 
 /**
  * 消息Tab.
@@ -17,7 +18,7 @@ import freemarker.template.TemplateModel;
  *
  */
 
-public class ServerInfoTemplateDirective implements TemplateDirectiveModel {
+public class ServerInfoTemplateDirective implements TemplateDirectiveModel, TemplateVariable {
 
 	private static Date serverStartTime = new Date();
 
@@ -25,6 +26,11 @@ public class ServerInfoTemplateDirective implements TemplateDirectiveModel {
 	public void execute(Environment env, @SuppressWarnings("rawtypes") Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
 		String html = "当前服务器IP:127.0.0.1  服务启动:" + serverStartTime.toLocaleString();
 		env.getOut().write(html);
+	}
+
+	@Override
+	public String getKey() {
+		return "serverInfo";
 	}
 
 }
