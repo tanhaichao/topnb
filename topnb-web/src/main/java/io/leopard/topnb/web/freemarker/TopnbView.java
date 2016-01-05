@@ -5,6 +5,7 @@ import java.util.List;
 
 import io.leopard.web.freemarker.TemplateVariable;
 import io.leopard.web.freemarker.template.AbstractFrameView;
+import io.leopard.web.freemarker.template.BodyTemplateDirective;
 import io.leopard.web.freemarker.template.ReplaceParamTemplateMethod;
 import io.leopard.web.freemarker.template.TimeTemplateMethod;
 
