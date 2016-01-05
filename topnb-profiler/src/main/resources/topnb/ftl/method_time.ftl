@@ -7,9 +7,9 @@
                                     <a href="javascript:void(0)" class="isw-tab" style="width:132px; text-align:center" title="按监控入口查看统计数据">按入口</a>
                                     <ul class="dd-list" style="right: 0px;">
                                     	<li><a href="?entryName="><span class="isw-edit"></span> 全部</a></li>
-                                    	<#list entryNameList as entryName>
+                                    	<#if entryNameList??><#list entryNameList as entryName>
 							            <li><a href="?entryName=${entryName!}"><span class="isw-edit"></span> ${entryName}</a></li>
-							            </#list>
+							            </#list></#if>
                                     </ul>
                                 </li>
                                 

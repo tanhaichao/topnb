@@ -1,7 +1,5 @@
 package io.leopard.topnb.methodtime;
 
-import io.leopard.topnb.TopnbBeanFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -9,6 +7,8 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.leopard.topnb.TopnbBeanFactory;
 
 public class EntryService {
 
@@ -31,7 +31,7 @@ public class EntryService {
 
 	public static <T> List<T> sub(List<T> list, int max) {
 		if (list == null || list.size() == 0) {
-			return list;
+			return new ArrayList<T>();
 		}
 		List<T> newList = new ArrayList<T>();
 		int count = 0;
