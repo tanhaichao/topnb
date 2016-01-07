@@ -7,6 +7,7 @@ import java.util.Set;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import io.leopard.topnb.TopnbBeanFactory;
 
@@ -53,8 +54,8 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 	}
 
 	protected boolean isJunit() {
-		// 改成判断是否web容器启动更好?
-
+		// 改成判断是否web容器启动更好?RequestContextHolder.getRequestAttributes() == null?
+		
 		// new Exception().printStackTrace();
 		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
 		for (StackTraceElement element : elements) {
