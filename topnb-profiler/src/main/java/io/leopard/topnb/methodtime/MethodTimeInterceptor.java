@@ -20,7 +20,7 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 
 	private static final long serialVersionUID = 1L;
 
-	private final MethodTimeService performanceService = TopnbBeanFactory.getMethodTimeService();
+	private final MethodTimeService methodTimeService = TopnbBeanFactory.getMethodTimeService();
 
 	private static boolean isCreated = false;
 
@@ -93,7 +93,7 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 		String className = getLongClassName(target);
 		String methodName = getLongMethodName(className, method.getName());
 
-		performanceService.add(methodName, time);
+		methodTimeService.add(methodName, time);
 		return result;
 	}
 
