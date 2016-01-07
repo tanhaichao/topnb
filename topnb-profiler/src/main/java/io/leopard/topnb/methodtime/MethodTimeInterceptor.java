@@ -59,7 +59,7 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 		// new Exception().printStackTrace();
 		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
 		for (StackTraceElement element : elements) {
-			if (element.getClassName().equals("org.junit.runners.ParentRunner1")) {
+			if (element.getClassName().equals("org.junit.runners.ParentRunner")) {
 				return true;
 			}
 		}
