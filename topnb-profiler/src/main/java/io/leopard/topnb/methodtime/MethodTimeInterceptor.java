@@ -1,5 +1,6 @@
 package io.leopard.topnb.methodtime;
 
+import io.leopard.jetty.WebServer;
 import io.leopard.topnb.TopnbBeanFactory;
 
 import java.lang.reflect.Method;
@@ -9,6 +10,7 @@ import java.util.Set;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
+import org.springframework.beans.BeansException;
 
 /**
  * 方法耗时监控.
@@ -28,37 +30,52 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 		if (isCreated) {
 			throw new IllegalArgumentException("方法耗时监控系统已经启动.");
 		}
-		// TopnbBeanFactory.setEnableMonitor(true);
 
-		// System.err.println("new BeanNameAutoProxyCreatorBean");
-		String[] beanNames = new String[] { "*Dao"//
-				, "*DaoMysqlImpl"//
-				, "*DaoMemcachedImpl"//
-				, "*DaoCacheImpl"//
-				, "*DaoRedisImpl"//
-				, "*DaoHttpImpl"//
-				, "*DaoOutsideImpl"//
-				, "*DaoOtherImpl"//
-				, "*DaoThriftImpl"//
-				, "*DaoFileImpl"//
-				, "*DaoImpl"//
-				, "*DaoMemoryImpl"//
-				, "*Service"//
-				, "*Controller"//
-		};
-		this.setBeanNames(beanNames);
+		boolean isJunit = isJunit();
+		if (!isJunit) {
+			String[] beanNames = new String[] { "*Dao"//
+					, "*DaoMysqlImpl"//
+					, "*DaoMemcachedImpl"//
+					, "*DaoCacheImpl"//
+					, "*DaoRedisImpl"//
+					, "*DaoHttpImpl"//
+					, "*DaoOutsideImpl"//
+					, "*DaoOtherImpl"//
+					, "*DaoThriftImpl"//
+					, "*DaoFileImpl"//
+					, "*DaoImpl"//
+					, "*DaoMemoryImpl"//
+					, "*Service"//
+					, "*Controller"//
+			};
+			this.setBeanNames(beanNames);
+		}
+
 		this.setInterceptorNames(new String[] { "topnbInterceptor" });
 	}
 
+	protected boolean isJunit() {
+		// 改成判断是否web容器启动更好?
+
+		// new Exception().printStackTrace();
+		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+		for (StackTraceElement element : elements) {
+			if (element.getClassName().equals("org.junit.runners.ParentRunner1")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private static Set<String> IGNORED_BEAN_NAME_SET = new HashSet<String>();
+
 	static {
 		IGNORED_BEAN_NAME_SET.add("conversionService");
 	}
 
 	@Override
 	protected boolean isMatch(String beanName, String mappedName) {
-		// System.err.println("beanName:" + beanName + " mappedName:" +
-		// mappedName);
+
 		if (IGNORED_BEAN_NAME_SET.contains(beanName)) {
 			return false;
 		}
