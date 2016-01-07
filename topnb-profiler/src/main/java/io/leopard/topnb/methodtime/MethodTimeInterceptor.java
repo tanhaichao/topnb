@@ -1,8 +1,5 @@
 package io.leopard.topnb.methodtime;
 
-import io.leopard.jetty.WebServer;
-import io.leopard.topnb.TopnbBeanFactory;
-
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +7,8 @@ import java.util.Set;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
-import org.springframework.beans.BeansException;
+
+import io.leopard.topnb.TopnbBeanFactory;
 
 /**
  * 方法耗时监控.
