@@ -7,7 +7,6 @@ import java.util.Set;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import io.leopard.topnb.TopnbBeanFactory;
 
