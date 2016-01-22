@@ -27,7 +27,7 @@ public class FileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public FileServlet() {
-		System.err.println("new FileServlet.");
+		System.err.println("new topnbFileServlet.");
 	}
 
 	@Override
