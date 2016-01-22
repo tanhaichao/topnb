@@ -9,9 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import io.leopard.topnb.TopnbBeanFactory;
 import io.leopard.topnb.web.AbstractHttpServlet;
 import io.leopard.topnb.web.Menu;
@@ -25,12 +22,7 @@ import io.leopard.topnb.web.freemarker.TopnbView;
 @WebServlet(name = "topnbMethodTimeServlet", urlPatterns = "/topnb/index.leo")
 public class MethodTimeServlet extends AbstractHttpServlet implements Menu {
 
-	public MethodTimeServlet() {
-		System.err.println("new MethodTimeServlet.");
-	}
-
 	private static final long serialVersionUID = 1L;
-	protected Log logger = LogFactory.getLog(this.getClass());
 
 	// private static MethodTimeService performanceService = TopnbBeanFactory.getMethodTimeService();
 
