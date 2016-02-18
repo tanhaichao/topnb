@@ -6,6 +6,8 @@
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>topnb-web</artifactId>
+	<name>Web操作界面</name>
+	<description>在线查看</description>
 
 	<dependencies>
 		<dependency>

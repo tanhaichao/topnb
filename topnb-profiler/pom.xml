@@ -6,6 +6,9 @@
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>topnb-profiler</artifactId>
+	<name>TopNB-Profiler</name>
+	<description>性能数据收集模块</description>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
