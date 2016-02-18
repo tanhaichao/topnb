@@ -6,7 +6,7 @@
 	<packaging>pom</packaging>
 
 	<name>性能监控系统</name>
-	<description>性能监控系统，方法耗时、连接池信息、堆栈信息等。</description>
+	<description>性能监控系统，方法耗时、连接池信息、线程信息等。</description>
 	
 	<url>http://leopard.io/topnb/</url>
 	<inceptionYear>2015</inceptionYear>
