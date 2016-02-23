@@ -48,7 +48,7 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 			};
 			this.setBeanNames(beanNames);
 		}
-
+		this.setProxyTargetClass(true);
 		this.setInterceptorNames(new String[] { "topnbInterceptor" });
 	}
 
