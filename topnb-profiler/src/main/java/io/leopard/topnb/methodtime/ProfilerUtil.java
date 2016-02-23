@@ -151,7 +151,13 @@ public class ProfilerUtil {
 	}
 
 	public static String parseClassName(String longMethodName) {
-		int index = longMethodName.lastIndexOf(".");
+		// com.zhongcao.app.web.controller.InventoryController$$EnhancerBySpringCGLIB$$487fed1c
+		// int index = longMethodName.lastIndexOf(".");
+		int index = longMethodName.lastIndexOf("$$EnhancerBySpringCGLIB");
+		if (index == -1) {
+			System.err.println("parseClassName:" + longMethodName);
+			index = longMethodName.lastIndexOf(".");
+		}
 		return longMethodName.substring(0, index);
 	}
 
@@ -173,6 +179,7 @@ public class ProfilerUtil {
 	}
 
 	public static String getInterfaceName(String longMethodName) {
+		System.out.println("longMethodName:" + longMethodName);
 		String className = parseClassName(longMethodName);
 		String simpleClassName = parseSimpleClassName(longMethodName);
 		// System.out.println("simpleClassName:" + simpleClassName);
@@ -183,6 +190,7 @@ public class ProfilerUtil {
 			return "$Proxy";
 		}
 
+		// com.zhongcao.app.web.controller.InventoryController$$EnhancerBySpringCGLIB$$487fed1c
 		Class<?> clazz;
 		try {
 			clazz = Class.forName(className);

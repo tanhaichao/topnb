@@ -54,7 +54,7 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 
 	protected boolean isJunit() {
 		// 改成判断是否web容器启动更好?RequestContextHolder.getRequestAttributes() == null?
-		
+
 		// new Exception().printStackTrace();
 		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
 		for (StackTraceElement element : elements) {
@@ -92,6 +92,8 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 
 		String className = getLongClassName(target);
 		String methodName = getLongMethodName(className, method.getName());
+
+		logger.info("invoke methodName:" + method.getName() + " longMethodName:" + methodName);
 
 		methodTimeService.add(methodName, time);
 		return result;
