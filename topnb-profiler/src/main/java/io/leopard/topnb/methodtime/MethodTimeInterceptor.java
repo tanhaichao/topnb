@@ -93,7 +93,7 @@ public class MethodTimeInterceptor extends BeanNameAutoProxyCreator implements M
 		String className = getLongClassName(target);
 		String methodName = getLongMethodName(className, method.getName());
 
-		logger.info("invoke methodName:" + method.getName() + " longMethodName:" + methodName);
+		// logger.info("invoke methodName:" + method.getName() + " longMethodName:" + methodName);
 
 		methodTimeService.add(methodName, time);
 		return result;
