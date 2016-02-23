@@ -155,7 +155,7 @@ public class ProfilerUtil {
 		// int index = longMethodName.lastIndexOf(".");
 		int index = longMethodName.lastIndexOf("$$EnhancerBySpringCGLIB");
 		if (index == -1) {
-			System.err.println("parseClassName:" + longMethodName);
+			// System.err.println("parseClassName:" + longMethodName);
 			index = longMethodName.lastIndexOf(".");
 		}
 		return longMethodName.substring(0, index);
