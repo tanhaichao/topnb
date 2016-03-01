@@ -7,7 +7,7 @@
 
 	<name>性能监控系统</name>
 	<description>性能监控系统，方法耗时、连接池信息、线程信息等。</description>
-	
+
 	<url>http://leopard.io/topnb/</url>
 	<inceptionYear>2015</inceptionYear>
 
@@ -43,4 +43,12 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>http://leopard.io/nexus/content/repositories/framework-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
