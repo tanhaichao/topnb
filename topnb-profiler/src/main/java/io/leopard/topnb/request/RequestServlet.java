@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,7 @@ import io.leopard.topnb.web.freemarker.TopnbView;
  * @author 阿海
  *
  */
-// @WebServlet(name = "topnbRequestServlet", urlPatterns = "/topnb/request.leo")
+@WebServlet(name = "topnbRequestServlet", urlPatterns = "/topnb/request.leo")
 public class RequestServlet extends HttpServlet implements Menu {
 
 	private static final long serialVersionUID = 1L;
