@@ -45,6 +45,17 @@
 				<version>${leopard.unified.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>io.leopard</groupId>
+				<artifactId>leopard-jetty</artifactId>
+				<version>${leopard.unified.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.leopard</groupId>
+				<artifactId>leopard-freemarker</artifactId>
+				<version>${leopard.unified.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

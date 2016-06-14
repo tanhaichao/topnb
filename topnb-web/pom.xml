@@ -36,7 +36,6 @@
 		<dependency>
 			<groupId>io.leopard</groupId>
 			<artifactId>leopard-freemarker</artifactId>
-			<version>0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
