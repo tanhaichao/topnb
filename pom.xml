@@ -33,12 +33,16 @@
 		<url>https://github.com/tanhaichao/topnb/issues</url>
 	</issueManagement>
 
+	<properties>
+		<leopard.unified.version>${project.version}</leopard.unified.version>
+	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>io.leopard</groupId>
 				<artifactId>leopard-jetty-test</artifactId>
-				<version>0.0.5</version>
+				<version>${leopard.unified.version}</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
