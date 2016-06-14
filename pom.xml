@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.leopard.topnb</groupId>
 	<artifactId>topnb</artifactId>
-	<version>0.9.4-SNAPSHOT</version>
+	<version>0.9.4</version>
 	<packaging>pom</packaging>
 
 	<name>性能监控系统</name>
@@ -23,9 +23,9 @@
 	</parent>
 
 	<scm>
-		<url>https://github.com/tanhaichao/topnb</url>
-		<connection>scm:svn:https://github.com/tanhaichao/topnb/trunk</connection>
-		<developerConnection>scm:svn:https://github.com/tanhaichao/topnb/trunk</developerConnection>
+		<url>https://github.com/tanhaichao/topnb/tags/topnb-0.9.4</url>
+		<connection>scm:svn:https://github.com/tanhaichao/topnb/tags/topnb-0.9.4</connection>
+		<developerConnection>scm:svn:https://github.com/tanhaichao/topnb/tags/topnb-0.9.4</developerConnection>
 	</scm>
 
 	<issueManagement>
